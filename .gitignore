@@ -1,0 +1,45 @@
+# -------------------------
+# Vue / Node
+# -------------------------
+node_modules/
+dist/
+.cache/
+.vite/
+*.log
+*.lock
+
+# -------------------------
+# Composer (if used)
+# -------------------------
+vendor/
+composer.lock
+
+# -------------------------
+# Editor / System junk
+# -------------------------
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# -------------------------
+# Plugin build artifacts
+# -------------------------
+
+# Ignore source maps and hot updates
+/public/js/assets/*.map
+/public/js/assets/*.hot-update.js
+
+# If your Vue app lives in vue-app/
+vue-app/node_modules/
+vue-app/dist/
+
+# Ignore temp files
+*.bak
+*.tmp
+
+# Ignore translation build files (if any)
+*.mo
+*.po~
