@@ -157,15 +157,23 @@ class Wp_3d_Master_Memory_Public {
 	}
 
 	public function render_shortcode( $atts ) {
-		$atts = shortcode_atts(['file' => ''], $atts);
+		$atts = shortcode_atts(['file' => null], $atts);
 	    $id = 'quiz-' . uniqid();
 
-	    ob_start(); ?>
+	    ob_start(); 
+	    if($atts['file']) :?>
 	    <div class="wp-3d-memory-master-wrapper" >
 			<div id = "wp-3d-memory-master-vue" data-file="<?php echo esc_url( $atts['file'] ); ?>">
 			</div>
 		</div>
 	    <?php
+		else :
+		?>
+		<div>
+			<p>Please add file url for 3D Memory Master. Upload json file in the WP Media then copy and paste the URL inside the shortcode. <br><br>Sample shortcode: <br><strong>[wp-3d-memory-master file="http://sampleurl.com/wp-content/uploads/2025/10/test.json"]</strong></p>
+		</div>
+		<?php	
+		endif;
 	    return ob_get_clean();
 	}
 
