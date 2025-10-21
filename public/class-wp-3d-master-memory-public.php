@@ -117,6 +117,10 @@ class Wp_3d_Master_Memory_Public {
                 true
             );
 
+            wp_localize_script('wp-3d-memory-master-vue', 'memoryMasterScript', [
+		        'restUrl' => esc_url(rest_url('quiz/v1/data')),
+		    ]);
+
             if (!empty($entry['css'])) {
                 foreach ($entry['css'] as $css_file) {
                     wp_enqueue_style(

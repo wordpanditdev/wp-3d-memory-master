@@ -297,7 +297,7 @@ export default {
     }
   },
   data() {
-    let quizUrl = 'http://wpquiz.local/wp-json/quiz/v1/data?file=' + this.fileUrl
+    let quizUrl = memoryMasterScript.restUrl + '?file=' + this.fileUrl
     return {
       screen: "prereq",
       answers: {},
