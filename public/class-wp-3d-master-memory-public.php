@@ -141,14 +141,6 @@ class Wp_3d_Master_Memory_Public {
 		    return $tag;
 		}, 10, 3);
 
-		wp_enqueue_script(
-            'wp-tailwind',
-            'https://cdn.tailwindcss.com',
-            array(),
-            null,
-            true
-        );
-
 	}
 
 	/**
@@ -166,10 +158,12 @@ class Wp_3d_Master_Memory_Public {
 
 	    ob_start(); 
 	    if($atts['file']) :?>
+	    <div id = "tailwind-cdn">
 	    <div class="wp-3d-memory-master-wrapper" >
 			<div id = "wp-3d-memory-master-vue" data-file="<?php echo esc_url( $atts['file'] ); ?>">
 			</div>
 		</div>
+	</div>
 	    <?php
 		else :
 		?>

@@ -1,16 +1,25 @@
 import { createApp } from 'vue'
 import './style.css'
-import App from './App.vue'
+import './assets/main.scss'
+import './assets/tailwind.css';
 import MemoryMasterQuiz from './components/MemoryMasterQuiz.vue'
 
-import './assets/main.scss'
+function loadTailwind() {
+  if (document.getElementById('tailwind-cdn')) {
+    const link = document.createElement('script');
+    link.src = 'https://cdn.tailwindcss.com';
+    link.id = 'tailwind-cdn';
+    document.head.appendChild(link);
+  }
+}
+
+//loadTailwind();
 
 //createApp(App).mount('#app')
 
 const el = document.getElementById('wp-3d-memory-master-vue')
 
 if (el) {
-	console.log('el', el)
   const fileUrl = el.dataset.file
   createApp(MemoryMasterQuiz, { fileUrl }).mount(el)
 }
