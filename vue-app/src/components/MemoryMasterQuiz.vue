@@ -1,8 +1,8 @@
 <template>
   <div class="memory-master-quiz">
     <!-- 📘 PREREQUISITE SCREEN -->
-    <div v-if="screen === 'prereq'" class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4 sm:p-8">
-      <div class="max-w-2xl mx-auto bg-white rounded-2xl shadow-2xl p-6 sm:p-10">
+    <div v-if="screen === 'prereq'" class="min-h-screen p-4 sm:p-8">
+      <div class="mx-auto bg-white rounded-2xl shadow-2xl p-6 sm:p-10">
         <div class="text-center mb-6">
           <div class="text-6xl mb-4">🏆</div>
           <h1 class="text-3xl font-bold mb-2">{{ quizData.quiz_title }}</h1>
@@ -80,7 +80,7 @@
     </div>
 
     <!-- 📘 INTRO SCREEN -->
-    <div v-else-if="screen === 'intro'" class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4 sm:p-8">
+    <div v-else-if="screen === 'intro'" class="min-h-screen p-4 sm:p-8">
       <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-2xl p-6 sm:p-8">
         <div class="text-center mb-8">
           <div class="text-6xl mb-4">🏆</div>
@@ -111,7 +111,7 @@
     </div>
 
     <!-- 📘 QUIZ SCREEN -->
-    <div v-else-if="screen === 'quiz'" class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4 sm:p-8">
+    <div v-else-if="screen === 'quiz'" class="min-h-screen p-4 sm:p-8">
       <div class="max-w-4xl mx-auto">
         <div class="bg-white rounded-xl shadow-lg p-4 mb-4">
           <div class="flex justify-between text-sm mb-2">
@@ -187,7 +187,7 @@
     </div>
 
     <!-- 📘 RESULTS SCREEN -->
-    <div v-else-if="screen === 'results'" class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4 sm:p-8">
+    <div v-else-if="screen === 'results'" class="min-h-screen p-4 sm:p-8">
       <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-2xl p-6 sm:p-8">
         <div class="text-center mb-8">
           <div
