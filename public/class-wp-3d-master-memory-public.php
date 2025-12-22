@@ -211,6 +211,20 @@ class Wp_3d_Master_Memory_Public {
 			<script id="quiz-data" type="application/json">
 				<?php echo wp_kses_post($json_content); ?>
 			</script>
+			<script>
+			    function sendHeight() {
+			        var height = document.body.scrollHeight;
+			        window.parent.postMessage({
+			            type: 'setHeight',
+			            height: height
+			        }, '*');
+			    }
+			    window.addEventListener('load', sendHeight);
+			    window.addEventListener('resize', sendHeight);
+			    setTimeout(sendHeight, 500);
+			    setTimeout(sendHeight, 1000);
+			    setTimeout(sendHeight, 2000);
+			</script>
 		</div>
 	</div>
 	    <?php
