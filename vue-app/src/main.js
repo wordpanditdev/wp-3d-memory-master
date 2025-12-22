@@ -3,6 +3,7 @@ import './style.css'
 import './assets/main.scss'
 import './assets/tailwind.css';
 import MemoryMasterQuiz from './components/MemoryMasterQuiz.vue'
+import QuizApp from './components/QuizApp.vue'
 
 function loadTailwind() {
   if (document.getElementById('tailwind-cdn')) {
@@ -21,5 +22,5 @@ const el = document.getElementById('wp-3d-memory-master-vue')
 
 if (el) {
   const fileUrl = el.dataset.file
-  createApp(MemoryMasterQuiz, { fileUrl }).mount(el)
+  createApp(QuizApp, { fileUrl }).mount(el)
 }

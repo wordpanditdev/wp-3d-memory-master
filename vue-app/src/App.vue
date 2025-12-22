@@ -1,10 +1,11 @@
 <script setup>
 import HelloWorld from './components/HelloWorld.vue'
 import MemoryMasterQuiz from './components/MemoryMasterQuiz.vue'
+import QuizApp from './components/QuizApp.vue'
 </script>
 
 <template>
-  <MemoryMasterQuiz/>
+  <QuizApp/>
 </template>
 
 <style scoped>

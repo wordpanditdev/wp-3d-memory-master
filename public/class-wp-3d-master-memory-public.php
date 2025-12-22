@@ -103,13 +103,56 @@ class Wp_3d_Master_Memory_Public {
 		 * class.
 		 */
 
+		wp_enqueue_script(
+		  'react',
+		  'https://unpkg.com/react@18/umd/react.development.js',
+		  [],
+		  null,
+		  true
+		);
+
+		wp_enqueue_script(
+		  'react-dom',
+		  'https://unpkg.com/react-dom@18/umd/react-dom.development.js',
+		  ['react'],
+		  null,
+		  true
+		);
+
+		wp_enqueue_script(
+	        'babel-standalone',
+	        'https://unpkg.com/@babel/standalone/babel.min.js',
+	        [],
+	        null,
+	        true
+	    );
+
+		wp_enqueue_script(
+            'wp-3d-memory-master-vue',
+            plugin_dir_url(__FILE__) . 'babel-js/' . 'quizApp.js',
+            array(),
+            null,
+            true
+        );
+
+        add_filter('script_loader_tag', function ($tag, $handle) {
+		    if ($handle === 'wp-3d-memory-master-vue') {
+		        return str_replace(
+		            '<script ',
+		            '<script type="text/babel" ',
+		            $tag
+		        );
+		    }
+		    return $tag;
+		}, 10, 2);
+
 		$manifest_path = plugin_dir_path(__DIR__) . 'public/js/manifest.json';
 
         if (file_exists($manifest_path)) {
             $manifest = json_decode(file_get_contents($manifest_path), true);
             $entry = $manifest['src/main.js'];
 
-            wp_enqueue_script(
+            /*wp_enqueue_script(
                 'wp-3d-memory-master-vue',
                 plugin_dir_url(__FILE__) . 'js/' . $entry['file'],
                 array(),
@@ -119,7 +162,7 @@ class Wp_3d_Master_Memory_Public {
 
             wp_localize_script('wp-3d-memory-master-vue', 'memoryMasterScript', [
 		        'restUrl' => esc_url(rest_url('quiz/v1/data')),
-		    ]);
+		    ]);*/
 
             if (!empty($entry['css'])) {
                 foreach ($entry['css'] as $css_file) {
@@ -134,12 +177,12 @@ class Wp_3d_Master_Memory_Public {
         }
 
 	    // Mark script as type="module"
-		add_filter('script_loader_tag', function($tag, $handle, $src) {
+		/*add_filter('script_loader_tag', function($tag, $handle, $src) {
 		    if ('wp-3d-memory-master-vue' === $handle) {
 		        return '<script type="module" src="' . esc_url($src) . '"></script>';
 		    }
 		    return $tag;
-		}, 10, 3);
+		}, 10, 3);*/
 
 	}
 
@@ -157,11 +200,17 @@ class Wp_3d_Master_Memory_Public {
 	    $id = 'quiz-' . uniqid();
 
 	    ob_start(); 
-	    if($atts['file']) :?>
+	    if($atts['file']) :
+	    	$json_content = file_get_contents($atts['file']);
+	    ?>
 	    <div id = "tailwind-cdn">
 	    <div class="wp-3d-memory-master-wrapper" >
-			<div id = "wp-3d-memory-master-vue" data-file="<?php echo esc_url( $atts['file'] ); ?>">
+			<div id = "wp-3d-memory-master-vue" class="memory-master-quiz" data-file="<?php echo esc_url( $atts['file'] ); ?>">
 			</div>
+
+			<script id="quiz-data" type="application/json">
+				<?php echo wp_kses_post($json_content); ?>
+			</script>
 		</div>
 	</div>
 	    <?php
