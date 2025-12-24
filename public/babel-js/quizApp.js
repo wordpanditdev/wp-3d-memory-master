@@ -70,7 +70,7 @@ const QuizApp = () => {
         sections.forEach(section => {
             section.questions.forEach((q, idx) => {
                 const qId = `q_${globalQuestionIndex}`;
-                if (answers[qId] !== undefined && answers[qId] === q.correct_index) {
+                if (answers[qId] !== undefined && answers[qId] === q.correct) {
                     total += section.points_per_question;
                 }
                 globalQuestionIndex++;
@@ -95,7 +95,7 @@ const QuizApp = () => {
     // Prerequisites Screen
     if (screen === 'prereq') {
         return (
-            <div style={{ padding: '24px 16px', maxWidth: '560px', margin: '0 auto' }}>
+            <div style={{ padding: '24px 20px', maxWidth: '1000px', margin: '0 auto' }}>
                 <div className={`card animate-fade-in-up`} style={{ padding: '32px 28px' }}>
                     {/* Header */}
                     <div style={{ textAlign: 'center', marginBottom: '28px' }}>
@@ -210,7 +210,7 @@ const QuizApp = () => {
         const sectionColors = ['blue', 'emerald', 'violet', 'gold'];
         
         return (
-            <div style={{ padding: '24px 16px', maxWidth: '720px', margin: '0 auto' }}>
+            <div style={{ padding: '24px 20px', maxWidth: '1000px', margin: '0 auto' }}>
                 <div className="card animate-fade-in-up" style={{ padding: '36px 28px' }}>
                     {/* Header */}
                     <div style={{ textAlign: 'center', marginBottom: '32px' }}>
@@ -340,7 +340,7 @@ const QuizApp = () => {
         const currentColor = sectionColors[currentSectionIdx];
         
         return (
-            <div style={{ padding: '24px 16px', maxWidth: '800px', margin: '0 auto' }}>
+            <div style={{ padding: '24px 20px', maxWidth: '1000px', margin: '0 auto' }}>
                 {/* Progress Header */}
                 <div className="card-elevated animate-fade-in" style={{ padding: '20px 24px', marginBottom: '20px' }}>
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
@@ -532,7 +532,7 @@ const QuizApp = () => {
         const shareText = `I scored ${score}/${maxScore} (${pct}%) on the 3-Day GK Memory Master! Test your knowledge: ${quizUrl}`;
 
         return (
-            <div style={{ padding: '24px 16px', maxWidth: '800px', margin: '0 auto' }}>
+            <div style={{ padding: '24px 20px', maxWidth: '1000px', margin: '0 auto' }}>
                 <div className="card animate-scale-in" style={{ padding: '0', overflow: 'hidden' }}>
                     {/* Score Display */}
                     <div className="score-display">
@@ -604,7 +604,7 @@ const QuizApp = () => {
                                     const startIdx = sections.slice(0, si).reduce((acc, s) => acc + s.questions.length, 0);
                                     section.questions.forEach((q, qi) => {
                                         const qId = `q_${startIdx + qi}`;
-                                        if (answers[qId] !== undefined && answers[qId] === q.correct_index) {
+                                        if (answers[qId] !== undefined && answers[qId] === q.correct) {
                                             sScore += section.points_per_question;
                                         }
                                     });
@@ -660,7 +660,7 @@ const QuizApp = () => {
                                     s.questions.map((q, qi) => {
                                         const globalIdx = sections.slice(0, si).reduce((acc, sec) => acc + sec.questions.length, 0) + qi;
                                         const qId = `q_${globalIdx}`;
-                                        const correct = answers[qId] === q.correct_index;
+                                        const correct = answers[qId] === q.correct;
                                         
                                         return (
                                             <div 
@@ -689,7 +689,7 @@ const QuizApp = () => {
                                                             <div style={{ fontSize: '13px', marginBottom: '12px' }}>
                                                                 <span style={{ color: 'var(--slate-500)' }}>Correct answer: </span>
                                                                 <span style={{ fontWeight: '600', color: 'var(--emerald-600)' }}>
-                                                                    {q.options[q.correct_index]}
+                                                                    {q.options[q.correct]}
                                                                 </span>
                                                             </div>
                                                         )}
