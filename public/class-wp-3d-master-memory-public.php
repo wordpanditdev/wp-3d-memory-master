@@ -131,7 +131,7 @@ class Wp_3d_Master_Memory_Public {
             'wp-3d-memory-master-vue',
             plugin_dir_url(__FILE__) . 'babel-js/' . 'quizApp.js',
             array(),
-            null,
+            $this->version,
             true
         );
 
